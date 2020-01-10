@@ -3,11 +3,12 @@ from datetime import datetime
 
 Today = datetime.now()
 Window = Tk()
-# corpo do programa
+# Corpo do programa
 
-#Area do usuario
+# Area do usuario
+
 User = Frame(Window)
-User.pack()
+User.pack( side = TOP )
 UserLine1 = Frame(User)
 UserLine1.pack( side = TOP )
 LabelName = Label(UserLine1, text="Nome:")
@@ -51,4 +52,42 @@ LabelDistrict.pack( side = LEFT )
 EntryDistrict = Entry(UserLine3, bd = 1)
 EntryDistrict.pack( side = LEFT )
 
+# Area do servico
+
+Service = Frame( Window )
+Service.pack( side = TOP )
+ServiceLine1 = Frame( Window )
+ServiceLine1.pack( side = TOP )
+
+# Opcoes de servico
+tkvar = StringVar( Window )
+ServiceOptions = { 'INSTALACAO','REPARO' }
+tkvar.set('Escolha')
+
+LabelService = Label(ServiceLine1, text = 'SERVICO:')
+LabelService.pack( side = LEFT )
+ServiceOptionsMenu = OptionMenu( ServiceLine1, tkvar, *ServiceOptions )
+ServiceOptionsMenu.pack( side = LEFT )
+
+# Opcoes de local
+tkvar = StringVar( Window )
+LocalOptions = { 'INTERNO','EXTERNO' }
+tkvar.set('Escolha')
+
+LabelLocal = Label(ServiceLine1, text = 'LOCAL:')
+LabelLocal.pack( side = LEFT )
+LocalOptionsMenu = OptionMenu( ServiceLine1, tkvar, *LocalOptions )
+LocalOptionsMenu.pack( side = LEFT )
+
+# Opcoes de prioridade
+tkvar = StringVar( Window )
+PriorityOptions =  'BAIXA','NORMAL','ALTA','URGENTE' 
+tkvar.set('Escolha')
+
+LabelpRIORITY = Label(ServiceLine1, text = 'PRIORIDADE:')
+LabelpRIORITY.pack( side = LEFT )
+PriorityOptionsMenu = OptionMenu( ServiceLine1, tkvar, *PriorityOptions )
+PriorityOptionsMenu.pack( side = LEFT )
+
+# Loop
 Window.mainloop()
