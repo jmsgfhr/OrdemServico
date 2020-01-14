@@ -86,8 +86,8 @@ tkvar = StringVar( Window )
 PriorityOptions =  'BAIXA','NORMAL','ALTA','URGENTE' 
 tkvar.set('Escolha')
 
-LabelpRIORITY = Label(ServiceLine1, text = 'PRIORIDADE:')
-LabelpRIORITY.pack( side = LEFT )
+Labelpriority = Label(ServiceLine1, text = 'PRIORIDADE:')
+Labelpriority.pack( side = LEFT )
 PriorityOptionsMenu = OptionMenu( ServiceLine1, tkvar, *PriorityOptions )
 PriorityOptionsMenu.pack( side = LEFT )
 
@@ -146,6 +146,45 @@ LabelObservations = Label( ServiceObservations, text="OBS:")
 LabelObservations.pack()
 EntryObservations = Text( ServiceObservations, width = 30 , height = 8 )
 EntryObservations.pack()
+
+ServiceLine6 = Frame( Service )
+ServiceLine6.pack( side = TOP )
+
+# opcoes de pagamento
+
+tkvar = StringVar( Window )
+PaymentOptions =  'A VISTA', 'PARCELADO'
+tkvar.set('Escolha')
+
+LabelPayment = Label(ServiceLine6, text = 'PAGAMENTO:')
+LabelPayment.pack( side = LEFT )
+PaymentOptionsMenu = OptionMenu( ServiceLine6, tkvar, *PaymentOptions )
+PaymentOptionsMenu.pack( side = LEFT )
+
+# opcoes de STATUS
+
+tkvar = StringVar( Window )
+PaymentStatus =  'ENVIADO', 'APROVADO', 'NAO APROVADO', 'PEDIDO', 'RECEBIDO', 'C/DEFEITO', 'RETIRADO', 'SAIU', 'DESCARTAR', 'NOVO', 'ENTRADA'
+tkvar.set('Escolha')
+
+PaymentStatusMenu = OptionMenu( ServiceLine6, tkvar, *PaymentStatus )
+PaymentStatusMenu.pack( side = RIGHT )
+LabelStatus = Label(ServiceLine6, text = 'STATUS:')
+LabelStatus.pack( side = RIGHT )
+
+ServiceLine7 = Frame( Service )
+ServiceLine7.pack( side = TOP )
+
+LabelServicePrice = Label(ServiceLine7, text="VALORES - SERVICO(S):")
+LabelServicePrice.pack( side = LEFT )
+EntryServicePrice = Entry(ServiceLine7, bd = 1)
+EntryServicePrice.pack( side = LEFT )
+LabelProductPrice = Label(ServiceLine7, text="PRODUTO(S):")
+LabelProductPrice.pack( side = LEFT )
+EntryProductPrice = Entry(ServiceLine7, bd = 1)
+EntryProductPrice.pack( side = LEFT )
+ButtonSave = Button( ServiceLine7 , text ="SALVAR", command = a )
+ButtonSave.pack( side = RIGHT )
 
 # Loop
 Window.mainloop()
