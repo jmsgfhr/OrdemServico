@@ -1,8 +1,14 @@
 from tkinter import  *
 from datetime import datetime
+from fpdf import FPDF
 
 Today = datetime.now()
 Window = Tk()
+pdf = FPDF( orientation='P', unit='mm', format='A4' )
+pdf.add_page()
+pdf.set_font("Arial", size=12)
+pdf.cell(200, 10, txt="oi", ln=1, align="C")
+pdf.output("simple_demo.pdf")
 # Corpo do programa
 
 # Area do usuario
@@ -183,7 +189,7 @@ LabelProductPrice = Label(ServiceLine7, text="PRODUTO(S):")
 LabelProductPrice.pack( side = LEFT )
 EntryProductPrice = Entry(ServiceLine7, bd = 1)
 EntryProductPrice.pack( side = LEFT )
-ButtonSave = Button( ServiceLine7 , text ="SALVAR", command = a )
+ButtonSave = Button( ServiceLine7 , text ="SALVAR")
 ButtonSave.pack( side = RIGHT )
 
 # Loop
