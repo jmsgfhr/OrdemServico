@@ -1,15 +1,57 @@
 from tkinter import  *
 from datetime import datetime
 from fpdf import FPDF
+import json
+from functools import partial
 
 Today = datetime.now()
+
 Window = Tk()
+
 pdf = FPDF( orientation='P', unit='mm', format='A4' )
 pdf.add_page()
 pdf.set_font("Arial", size=12)
 pdf.cell(200, 10, txt="oi", ln=1, align="C")
 pdf.output("simple_demo.pdf")
 # Corpo do programa
+
+# Funcoes
+
+with open('database.json','r') as BD:
+    database = json.load(BD)
+BD.close()
+
+def saveOrdem():
+    ordem =  {
+        "name": EntryName.get(),
+        "certified": EntryCertified.get(),
+        "phone": EntryPhone.get(),
+        "email": EntryEmail.get(),
+        "adress": EntryAdress.get(),
+        "cep": EntryCEP.get(),
+        "date": LabelDateShow['text'],
+        "city": EntryCity.get(),
+        "district": EntryDistrict.get(),
+        "service": ServicePick.get(),
+        "local": LocalPick.get(),
+        "priority": PriorityPick.get(),
+        "model": EntryModel.get(),
+        "call": EntryCall.get(),
+        "serialNumber": EntrySerialNumber.get(),
+        "acesories": EntryAcessories.get(),
+        "relatedProblem": EntryRelatedProblem.get(1.0,END),
+        "problem": EntryProblem.get(1.0,END),
+        "parts": EntryParts.get(1.0,END),
+        "observations": EntryObservations.get(1.0,END),
+        "payment": PaymentPick.get(),
+        "status": StatusPick.get(),
+        "servicePrice": EntryServicePrice.get(),
+        "productPrice": EntryProductPrice.get()
+        }    
+    database.append(ordem)
+    with open('database.json','w') as BD:
+        json.dump(database,BD)
+    BD.close()
 
 # Area do usuario
 
@@ -68,33 +110,33 @@ ServiceLine1 = Frame( Service )
 ServiceLine1.pack( side = TOP )
 
 # Opcoes de servico
-tkvar = StringVar( Window )
+ServicePick = StringVar( Window )
 ServiceOptions = { 'INSTALACAO','REPARO' }
-tkvar.set('Escolha')
+ServicePick.set('Escolha')
 
 LabelService = Label(ServiceLine1, text = 'SERVICO:')
 LabelService.pack( side = LEFT )
-ServiceOptionsMenu = OptionMenu( ServiceLine1, tkvar, *ServiceOptions )
+ServiceOptionsMenu = OptionMenu( ServiceLine1, ServicePick, *ServiceOptions )
 ServiceOptionsMenu.pack( side = LEFT )
 
 # Opcoes de local
-tkvar = StringVar( Window )
+LocalPick = StringVar( Window )
 LocalOptions = { 'INTERNO','EXTERNO' }
-tkvar.set('Escolha')
+LocalPick.set('Escolha')
 
 LabelLocal = Label(ServiceLine1, text = 'LOCAL:')
 LabelLocal.pack( side = LEFT )
-LocalOptionsMenu = OptionMenu( ServiceLine1, tkvar, *LocalOptions )
+LocalOptionsMenu = OptionMenu( ServiceLine1, LocalPick, *LocalOptions )
 LocalOptionsMenu.pack( side = LEFT )
 
 # Opcoes de prioridade
-tkvar = StringVar( Window )
+PriorityPick = StringVar( Window )
 PriorityOptions =  'BAIXA','NORMAL','ALTA','URGENTE' 
-tkvar.set('Escolha')
+PriorityPick.set('Escolha')
 
 Labelpriority = Label(ServiceLine1, text = 'PRIORIDADE:')
 Labelpriority.pack( side = LEFT )
-PriorityOptionsMenu = OptionMenu( ServiceLine1, tkvar, *PriorityOptions )
+PriorityOptionsMenu = OptionMenu( ServiceLine1, PriorityPick, *PriorityOptions )
 PriorityOptionsMenu.pack( side = LEFT )
 
 ServiceLine2 = Frame( Service )
@@ -158,22 +200,22 @@ ServiceLine6.pack( side = TOP )
 
 # opcoes de pagamento
 
-tkvar = StringVar( Window )
+PaymentPick = StringVar( Window )
 PaymentOptions =  'A VISTA', 'PARCELADO'
-tkvar.set('Escolha')
+PaymentPick.set('Escolha')
 
 LabelPayment = Label(ServiceLine6, text = 'PAGAMENTO:')
 LabelPayment.pack( side = LEFT )
-PaymentOptionsMenu = OptionMenu( ServiceLine6, tkvar, *PaymentOptions )
+PaymentOptionsMenu = OptionMenu( ServiceLine6, PaymentPick, *PaymentOptions )
 PaymentOptionsMenu.pack( side = LEFT )
 
 # opcoes de STATUS
 
-tkvar = StringVar( Window )
+StatusPick = StringVar( Window )
 PaymentStatus =  'ENVIADO', 'APROVADO', 'NAO APROVADO', 'PEDIDO', 'RECEBIDO', 'C/DEFEITO', 'RETIRADO', 'SAIU', 'DESCARTAR', 'NOVO', 'ENTRADA'
-tkvar.set('Escolha')
+StatusPick.set('Escolha')
 
-PaymentStatusMenu = OptionMenu( ServiceLine6, tkvar, *PaymentStatus )
+PaymentStatusMenu = OptionMenu( ServiceLine6, StatusPick, *PaymentStatus )
 PaymentStatusMenu.pack( side = RIGHT )
 LabelStatus = Label(ServiceLine6, text = 'STATUS:')
 LabelStatus.pack( side = RIGHT )
@@ -189,7 +231,7 @@ LabelProductPrice = Label(ServiceLine7, text="PRODUTO(S):")
 LabelProductPrice.pack( side = LEFT )
 EntryProductPrice = Entry(ServiceLine7, bd = 1)
 EntryProductPrice.pack( side = LEFT )
-ButtonSave = Button( ServiceLine7 , text ="SALVAR")
+ButtonSave = Button( ServiceLine7 , text ="SALVAR", command = saveOrdem)
 ButtonSave.pack( side = RIGHT )
 
 # Loop
