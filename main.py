@@ -8,43 +8,6 @@ Today = datetime.now()
 
 Window = Tk()
 
-#this will define the ELEMENTS that will compose the template. 
-elements = [
-    { 'name': 'company_logo', 'type': 'I', 'x1': 20.0, 'y1': 17.0, 'x2': 78.0, 'y2': 30.0, 'font': None, 'size': 0.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'logo', 'priority': 2, },
-    { 'name': 'company_name', 'type': 'T', 'x1': 20.0, 'y1': 32.5, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'client_name', 'type': 'T', 'x1': 20.0, 'y1': 40, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'client_certified', 'type': 'T', 'x1': 20.0, 'y1': 40, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'client_phone', 'type': 'T', 'x1': 20.0, 'y1': 50, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'client_email', 'type': 'T', 'x1': 20.0, 'y1': 50, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'client_adress', 'type': 'T', 'x1': 20.0, 'y1': 60, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'client_cep', 'type': 'T', 'x1': 20.0, 'y1': 60, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'date', 'type': 'T', 'x1': 20.0, 'y1': 70, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'client_city', 'type': 'T', 'x1': 20.0, 'y1': 70, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'client_district', 'type': 'T', 'x1': 20.0, 'y1': 70, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'service_type', 'type': 'T', 'x1': 20.0, 'y1': 80, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'service_local', 'type': 'T', 'x1': 20.0, 'y1': 80, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'service_priority', 'type': 'T', 'x1': 20.0, 'y1': 90, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'service_model', 'type': 'T', 'x1': 20.0, 'y1': 90, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'service_call', 'type': 'T', 'x1': 20.0, 'y1': 90, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'serial_number', 'type': 'T', 'x1': 20.0, 'y1': 100, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'acessories', 'type': 'T', 'x1': 20.0, 'y1': 110, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'related_problem', 'type': 'T', 'x1': 20.0, 'y1': 120, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'problem', 'type': 'T', 'x1': 20.0, 'y1': 120, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'service_parts', 'type': 'T', 'x1': 20.0, 'y1': 130, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'observation', 'type': 'T', 'x1': 20.0, 'y1': 140, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'payment_type', 'type': 'T', 'x1': 20.0, 'y1': 150, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'status', 'type': 'T', 'x1': 20.0, 'y1': 150, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'service_value', 'type': 'T', 'x1': 20.0, 'y1': 160, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-    { 'name': 'service_products', 'type': 'T', 'x1': 20.0, 'y1': 160, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
-]
-
-#here we instantiate the template and define the HEADER
-f = Template(format="A4", elements=elements,
-             title="Ordem de Servico")
-f.add_page()
-
-
-
 # Corpo do programa
 
 # Funcoes
@@ -86,6 +49,87 @@ def saveOrdem():
     BD.close()
     
     #creating pdf
+    #this will define the ELEMENTS that will compose the template. 
+    elements = [
+        { 'name': 'company_logo', 'type': 'I', 'x1': 20.0, 'y1': 17.0, 'x2': 78.0, 'y2': 30.0, 'font': None, 'size': 0.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'logo', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 42, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Nome:', 'priority': 2, },
+        { 'name': 'client_name', 'type': 'T', 'x1': 35.0, 'y1': 42, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 52, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'CPF/CNPJ:', 'priority': 2, },
+        { 'name': 'client_certified', 'type': 'T', 'x1': 45.0, 'y1': 52, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 85.0, 'y1': 52, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Telefone:', 'priority': 2, },
+        { 'name': 'client_phone', 'type': 'T', 'x1': 105, 'y1': 52, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 62, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'E-mail:', 'priority': 2, },
+        { 'name': 'client_email', 'type': 'T', 'x1': 35.0, 'y1': 62, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 120, 'y1': 62, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Endereco:', 'priority': 2, },
+        { 'name': 'client_adress', 'type': 'T', 'x1': 142, 'y1': 62, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 72, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'CEP:', 'priority': 2, },
+        { 'name': 'client_cep', 'type': 'T', 'x1': 32.0, 'y1': 72, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 150.0, 'y1': 0, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Data:', 'priority': 2, },
+        { 'name': 'date', 'type': 'T', 'x1': 161.0, 'y1': 0, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 55.0, 'y1': 72, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Cidade:', 'priority': 2, },
+        { 'name': 'client_city', 'type': 'T', 'x1': 72.0, 'y1': 72, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 120.0, 'y1': 72, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Bairro:', 'priority': 2, },
+        { 'name': 'client_district', 'type': 'T', 'x1': 135.0, 'y1': 72, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 102, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Servico:', 'priority': 2, },
+        { 'name': 'service_type', 'type': 'T', 'x1': 37.0, 'y1': 102, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 70.0, 'y1': 102, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Local:', 'priority': 2, },
+        { 'name': 'service_local', 'type': 'T', 'x1': 83.0, 'y1': 102, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 110.0, 'y1': 102, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Prioridade:', 'priority': 2, },
+        { 'name': 'service_priority', 'type': 'T', 'x1': 133.0, 'y1': 102, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 112, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Modelo:', 'priority': 2, },
+        { 'name': 'service_model', 'type': 'T', 'x1': 37.0, 'y1': 112, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 70, 'y1': 112, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Chamado:', 'priority': 2, },
+        { 'name': 'service_call', 'type': 'T', 'x1': 92, 'y1': 112, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 122, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'N/S:', 'priority': 2, },
+        { 'name': 'serial_number', 'type': 'T', 'x1': 29.0, 'y1': 122, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 83.0, 'y1': 122, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Acessorios:', 'priority': 2, },
+        { 'name': 'acessories', 'type': 'T', 'x1': 108.0, 'y1': 122, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 132, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Problema Ralatado:', 'priority': 2, },
+        { 'name': 'related_problem', 'type': 'T', 'x1': 20.0, 'y1': 142, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 152, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Problema Constatado:', 'priority': 2, },
+        { 'name': 'problem', 'type': 'T', 'x1': 20.0, 'y1': 162, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 172, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Pecas:', 'priority': 2, },
+        { 'name': 'service_parts', 'type': 'T', 'x1': 20.0, 'y1': 182, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 192, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Observacoes:', 'priority': 2, },
+        { 'name': 'observation', 'type': 'T', 'x1': 20.0, 'y1': 202, 'x2': 25.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 0, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 250, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Pagamento:', 'priority': 2, },
+        { 'name': 'payment_type', 'type': 'T', 'x1': 45.0, 'y1': 250, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 77.0, 'y1': 250, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Status:', 'priority': 2, },
+        { 'name': 'status', 'type': 'T', 'x1': 92.0, 'y1': 250, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 20.0, 'y1': 262, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Servico(s):', 'priority': 2, },
+        { 'name': 'service_value', 'type': 'T', 'x1': 42.0, 'y1': 262, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+        
+        { 'name': 'label', 'type': 'T', 'x1': 77.0, 'y1': 262, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': 'Produtos(s):', 'priority': 2, },
+        { 'name': 'service_products', 'type': 'T', 'x1': 102.0, 'y1': 262, 'x2': 115.0, 'y2': 37.5, 'font': 'Arial', 'size': 12.0, 'bold': 1, 'italic': 0, 'underline': 0, 'foreground': 0, 'background': 0, 'align': 'I', 'text': '', 'priority': 2, },
+    ]
+
+    #here we instantiate the template and define the HEADER
+    f = Template(format="A4", elements=elements,
+                title="Ordem de Servico")
+    f.add_page()
     
     #we FILL some of the fields of the template with the information we want
     #note we access the elements treating the template instance as a "dict"
@@ -115,10 +159,9 @@ def saveOrdem():
     f["status"] = StatusPick.get()
     f["service_value"] = EntryServicePrice.get()
     f["service_products"] = EntryProductPrice.get()
-    fileName = "batata"
 
     #and now we render the page
-    f.render("./"+fileName+".pdf")
+    f.render("./Servico.pdf")
 
 # Area do usuario
 
